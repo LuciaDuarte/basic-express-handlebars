@@ -1,0 +1,19 @@
+<h2>
+  Create movie
+</h2>
+<form action="/movies/create" method="POST" enctype="multipart/form-data">
+  <label for="">
+    Title
+  </label>
+  <input type="text" name="title" />
+  <label for="">
+    Synopsis
+  </label>
+  <textarea name="synopsis" rows="4" cols="10"/></textarea>
+  <label for="">
+    Image
+  </label>
+  <input type="file" name="image" />
+
+  <button type="submit">Create</button>
+</form>

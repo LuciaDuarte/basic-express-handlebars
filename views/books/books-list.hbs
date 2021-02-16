@@ -1,0 +1,34 @@
+<h1>
+  Books List
+</h1>
+<hr />
+{{#each books}}
+<h3>
+  <a href="/books/{{id}}">
+    {{title}}
+  </a>
+</h3>
+<p>
+  <a href="/books/{{id}}/edit">
+    Edit
+  </a>
+</p>
+<form action="/books/{{id}}/delete" method="post">
+  <button type="submit">
+    Delete
+  </button>
+</form>
+{{/each}}
+
+<script>
+  let forms = [...document.getElementsByTagName('form')];
+  forms.forEach((form) => {
+    form.addEventListener("submit", ((event) => {
+      event.preventDefault();
+      let result = confirm("Are you sure you want to delete?");
+      if (result) {
+        form.submit();
+      }
+    }));
+  });
+</script>

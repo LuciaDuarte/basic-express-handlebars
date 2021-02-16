@@ -1,0 +1,35 @@
+<div id="map" style="width: 1000px; height: 500px"></div>
+
+<button onclick="showMarkers({{markers}})"> Show Markers</button>
+<button onclick="calcRoute()">Route</button>
+
+<script>
+  function showMarkers(markers) {
+    markers.forEach(marker => {
+      new google.maps.Marker({
+        position: marker,
+        map: map
+      })
+    })
+  }
+
+  function calcRoute() {
+    let directionsService = new google.maps.DirectionsService();
+    let directionsRenderer = new google.maps.DirectionsRenderer();
+    let start = 'Alvalade, Lisboa'
+    let end = 'Saldanha, Lisboa'
+
+    let request = {
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING'
+    }
+
+    directionsService.route(request, (result, status) => {
+      if (status === 'OK') {
+        directionsRenderer.setDirections(result);
+        directionsRenderer.setMap(map)
+      }
+    })
+  }
+</script>
